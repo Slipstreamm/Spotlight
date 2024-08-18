@@ -4,12 +4,13 @@ from pprint import pprint
 green = '#3f9421'
 
 with ui.header(elevated=True).style('background-color: #3f9421').classes('items-center justify-center'):
-    ui.link('Spotlight', '/home').style('font-size: 135%; text-decoration: none; color: #FFFFFF')
+    ui.link('Spotlight', '/').style('font-size: 135%; text-decoration: none; color: #FFFFFF')
     ui.link('Top Tracks', '/tracks').style('color: #FFFFFF').style('font-size: 110%; text-decoration: none')
     ui.link('Top Artists', '/artists').style('color: #FFFFFF').style('font-size: 110%; text-decoration: none')
     ui.link('Top Genres', '/tracks').style('color: #FFFFFF').style('font-size: 110%; text-decoration: none')
     ui.link('Recent Streams', '/recent').style('color: #FFFFFF').style('font-size: 110%; text-decoration: none')
     ui.button('Login with Spotify', on_click=lambda: spotifyapi.authorizeApp()).props('color=black')
+    ui.button('Full Reload', on_click=lambda: homepage.refresh()).props('color=black').classes(replace='items-center justify-right')
 
 @ui.refreshable
 def homepage():
