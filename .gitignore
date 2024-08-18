@@ -1,2 +1,3 @@
 .nicegui/
+.nicegui/storage-general.json
 __pycache__/
