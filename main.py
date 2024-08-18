@@ -72,6 +72,8 @@ def tracks():
         ui.link('Recent Streams', '/recent').style('color: #FFFFFF').style('font-size: 110%; text-decoration: none')
         ui.button('Login with Spotify', on_click=lambda: spotifyapi.authorizeApp()).props('color=black')
         ui.button('Full Reload', on_click=lambda: tracks.refresh()).props('color=black').classes(replace='items-center justify-right')
+
+    ui.label('Top Tracks').style('font-size: 200%').classes('mx-auto justify-center items-center')
     t = spotifyapi.topItems(50, 'tracks', 'long_term', app.storage.general['accesstoken'])
     with ui.list() as l:
         l.classes('justify-center items-start mx-auto')
@@ -101,10 +103,10 @@ def tracks():
                     s.classes('w-32 h-32')
                     ui.image('images/spotifywhite.png').props('fit=scale-down').style('width: 30px; height: 30px; padding-top: 20px')
                     ui.tooltip('Open on Spotify')
-                with ui.link(target='/track').style('padding-top: 20px; height: 30px; width: 30px;') as s:
+                with ui.link(target=f'/track?id={item['id']}').style('padding-top: 20px; height: 30px; width: 30px;') as s:
                     s.classes('w-32 h-32')
-                    ui.image('images/spotifywhite.png').props('fit=scale-down').style('width: 30px; height: 30px; padding-top: 20px')
-                    ui.tooltip('Open on Spotify')
+                    ui.image('images/insights.png').props('fit=scale-down').style('width: 30px; height: 30px; padding-top: 20px')
+                    ui.tooltip('Statistics')
             with ui.column():
                 ui.space()
                 ui.separator()
